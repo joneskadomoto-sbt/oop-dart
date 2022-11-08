@@ -5,8 +5,12 @@ void main(List<String> arguments) {
   double weight = 100.2;
   String color = "Verde e amarela";
   String flavor = "Doce e cítrica";
-  int daysSinceHarvest = 40;
-  bool isMature;
+  int daysSinceHarvest = 29;
+  bool isMature = funcIsMature(daysSinceHarvest);
 
-  daysSinceHarvest >= 30 ? isMature = true : isMature = false;
+  print(isMature);
+}
+
+bool funcIsMature(int days) {
+  return days >= 30 ? true : false;
 }
