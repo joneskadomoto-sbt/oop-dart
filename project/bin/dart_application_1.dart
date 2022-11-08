@@ -8,9 +8,23 @@ void main(List<String> arguments) {
   int daysSinceHarvest = 31; //args
   bool isMature = funcIsMature(daysSinceHarvest);
 
-  print(isMature);
-  maturityStatus(fruit: name, days: daysSinceHarvest, color: "Azul");
-  funcTimeToMature(daysSinceHarvest: daysSinceHarvest);
+  Fruta fruta01 = Fruta(name, weight, color, flavor, daysSinceHarvest);
+
+  Fruta fruta02 = Fruta('Uva', 40, "Roxa", "Doce", 20);
+  print(fruta01);
+  print(fruta02);
+}
+
+class Fruta {
+  String name;
+  double weight;
+  String color;
+  String flavor;
+  int daysSinceHarvest;
+  bool? isMature;
+
+  Fruta(this.name, this.weight, this.color, this.flavor, this.daysSinceHarvest,
+      {this.isMature});
 }
 
 bool funcIsMature(int days /* params */) {
