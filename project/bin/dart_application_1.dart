@@ -5,11 +5,12 @@ void main(List<String> arguments) {
   double weight = 100.2;
   String color = "Verde e amarela";
   String flavor = "Doce e cítrica";
-  int daysSinceHarvest = 29; //args
+  int daysSinceHarvest = 31; //args
   bool isMature = funcIsMature(daysSinceHarvest);
 
   print(isMature);
   maturityStatus(fruit: name, days: daysSinceHarvest, color: "Azul");
+  funcTimeToMature(daysSinceHarvest: daysSinceHarvest);
 }
 
 bool funcIsMature(int days /* params */) {
@@ -23,4 +24,13 @@ void maturityStatus(
       : print("A $fruit não está madura");
 
   print("A $fruit é $color");
+}
+
+funcTimeToMature({required int daysSinceHarvest}) {
+  int daysToMature = 30;
+  if (daysSinceHarvest >= 30) return;
+  int daysRemaining = daysToMature - daysSinceHarvest;
+  daysRemaining != 1
+      ? print("Faltam $daysRemaining dias para amadurecer")
+      : print("Falta $daysRemaining dia para amadurecer");
 }
