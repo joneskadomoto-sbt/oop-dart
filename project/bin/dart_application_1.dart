@@ -9,6 +9,19 @@ void main(List<String> arguments) {
   bool isMature = funcIsMature(daysSinceHarvest);
 
   daysSinceHarvest >= 30 ? true : false;
+
+  Vegetables mandioca = Vegetables("Mandioca", 1200, "Marrom", true);
+  Fruit banana = Fruit("Banana", 75, "Amarela", "Doce", 12);
+  Nuts macadamia = Nuts("Macadamia", 2, "Branco Off-white", "Doce", 20, 35);
+  Citrus limao = Citrus("Limão", 50, "Verde", "Azedo", 5, 9);
+
+  mandioca.printFood();
+  banana.printFood();
+  macadamia.printFood();
+  limao.printFood();
+
+  mandioca.cook();
+  limao.makeJuice();
 }
 
 bool funcIsMature(int days /* params */) {
@@ -82,26 +95,24 @@ class Vegetables extends Food {
   }
 }
 
-class Citrus {
-  String name;
-  double weight;
-  String color;
-  int daysSinceHarvest;
-  bool isMature;
+class Citrus extends Fruit {
   double citricLevel;
 
-  Citrus(this.name, this.weight, this.color, this.daysSinceHarvest,
-      this.isMature, this.citricLevel);
+  Citrus(String name, double weight, String color, String flavor,
+      int daysSinceHarvest, this.citricLevel)
+      : super(name, weight, color, flavor, daysSinceHarvest);
+
+  void thereIsSoda(bool exists) {
+    exists
+        ? print("Existe Refrigerante de $name")
+        : print("Não há refrigerante de $name");
+  }
 }
 
-class Nuts {
-  String name;
-  double weight;
-  String color;
-  int daysSinceHarvest;
-  bool isMature;
+class Nuts extends Fruit {
   double oilPercentage;
 
-  Nuts(this.name, this.weight, this.color, this.daysSinceHarvest, this.isMature,
-      this.oilPercentage);
+  Nuts(String name, double weight, String color, String flavor,
+      int daysSinceHarvest, this.oilPercentage)
+      : super(name, weight, color, flavor, daysSinceHarvest);
 }
