@@ -8,23 +8,7 @@ void main(List<String> arguments) {
   int daysSinceHarvest = 31; //args
   bool isMature = funcIsMature(daysSinceHarvest);
 
-  Fruta fruta01 = Fruta(name, weight, color, flavor, daysSinceHarvest);
-
-  Fruta fruta02 = Fruta('Uva', 40, "Roxa", "Doce", 20);
-  print(fruta01);
-  print(fruta02);
-}
-
-class Fruta {
-  String name;
-  double weight;
-  String color;
-  String flavor;
-  int daysSinceHarvest;
-  bool? isMature;
-
-  Fruta(this.name, this.weight, this.color, this.flavor, this.daysSinceHarvest,
-      {this.isMature});
+  daysSinceHarvest >= 30 ? true : false;
 }
 
 bool funcIsMature(int days /* params */) {
@@ -47,4 +31,24 @@ funcTimeToMature({required int daysSinceHarvest}) {
   daysRemaining != 1
       ? print("Faltam $daysRemaining dias para amadurecer")
       : print("Falta $daysRemaining dia para amadurecer");
+}
+
+class Fruit {
+  String name;
+  double weight;
+  String color;
+  String flavor;
+  int daysSinceHarvest;
+  bool? isMature;
+
+  Fruit(this.name, this.weight, this.color, this.flavor, this.daysSinceHarvest,
+      {this.isMature});
+
+  methIsMature(int daysToMature) {
+    isMature = daysSinceHarvest >= daysToMature;
+
+    var isMatureConvert = isMature == true ? "Sim" : "Não";
+    print(
+        "A sua $name foi colhida a $daysSinceHarvest, e precisa de $daysToMature dias para poder comer. Ela está madura ? $isMatureConvert");
+  }
 }
