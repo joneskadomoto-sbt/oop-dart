@@ -58,7 +58,7 @@ class Food {
   }
 }
 
-class Fruit extends Food {
+class Fruit extends Food implements Cake {
   String flavor;
   int daysSinceHarvest;
   bool? isMature;
@@ -80,9 +80,24 @@ class Fruit extends Food {
   void makeJuice() {
     print("Você fez um ótimo suco de $name");
   }
+
+  @override
+  void bake() {
+    print("Assar a massa");
+  }
+
+  @override
+  void makeDough() {
+    print("Misturar a massa");
+  }
+
+  @override
+  void separateIngredients() {
+    print("Pegar a fruta");
+  }
 }
 
-class Vegetables extends Food {
+class Vegetables extends Food implements Cake {
   bool isNeedToCook;
 
   Vegetables(String name, double weight, String color, this.isNeedToCook)
@@ -93,6 +108,15 @@ class Vegetables extends Food {
         ? print("O $name está cozinhando")
         : print("O $name está cozido");
   }
+
+  @override
+  void bake() {}
+
+  @override
+  void makeDough() {}
+
+  @override
+  void separateIngredients() {}
 }
 
 class Citrus extends Fruit {
@@ -115,4 +139,16 @@ class Nuts extends Fruit {
   Nuts(String name, double weight, String color, String flavor,
       int daysSinceHarvest, this.oilPercentage)
       : super(name, weight, color, flavor, daysSinceHarvest);
+
+  @override
+  void makeDough() {
+    print("tirar a casca");
+    super.makeDough();
+  }
+}
+
+abstract class Cake {
+  void separateIngredients();
+  void makeDough();
+  void bake();
 }
